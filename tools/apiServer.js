@@ -47,7 +47,7 @@ server.use((req, res, next) => {
 server.post("/courses/", function (req, res, next) {
   const error = validateCourse(req.body);
   if (error) {
-    res.status(400).send(error);
+    res.status(400).json(error);
   } else {
     req.body.slug = createSlug(req.body.title); // Generate a slug for new courses.
     next();
@@ -66,11 +66,13 @@ server.listen(port, () => {
 // Centralized logic
 
 // Returns a URL friendly slug
-function createSlug(value) {
-  return value
+function createSlug(value: string) {
+  // deepcode ignore HTTPSourceWithUncheckedType: <please specify a reason of ignoring this>
+  const slug = value
     .replace(/[^a-z0-9_]+/gi, "-")
     .replace(/^-|-$/g, "")
     .toLowerCase();
+  return slug;
 }
 
 function validateCourse(course) {

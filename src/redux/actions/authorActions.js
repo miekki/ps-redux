@@ -18,7 +18,7 @@ export function loadAuthors() {
         dispatch(loadAuthorsSuccess(authors));
       })
       .catch((error) => {
-        dispatch(apiCallError(error));
+        dispatch(apiCallError());
         throw error;
       });
   };
