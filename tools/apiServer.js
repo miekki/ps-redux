@@ -66,7 +66,7 @@ server.listen(port, () => {
 // Centralized logic
 
 // Returns a URL friendly slug
-function createSlug(value: string) {
+function createSlug(value) {
   // deepcode ignore HTTPSourceWithUncheckedType: <please specify a reason of ignoring this>
   const slug = value
     .replace(/[^a-z0-9_]+/gi, "-")
